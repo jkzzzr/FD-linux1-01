@@ -1,4 +1,4 @@
-Sun Dec 25 12:46:38 CST 2016
+Sun Dec 25 16:48:13 CST 2016
 ERROR org.eclipse.rse.core  Unexpected Exception
 java.net.UnknownHostException: localhost.centos6.5: localhost.centos6.5: 未知的名称或服务
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1505)
@@ -33,39 +33,4 @@ Caused by: java.net.UnknownHostException: localhost.centos6.5: 未知的名称�
 	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1500)
 	... 25 more
---------------------------------------------
-Sun Dec 25 12:46:38 CST 2016
-ERROR org.eclipse.rse.core  Unexpected Exception
-java.net.UnknownHostException: localhost.centos6.5: localhost.centos6.5: 未知的名称或服务
-	at java.net.InetAddress.getLocalHost(InetAddress.java:1505)
-	at org.eclipse.rse.core.RSECorePlugin.getLocalMachineName(RSECorePlugin.java:265)
-	at org.eclipse.rse.core.RSEPreferencesManager.getDefaultPrivateSystemProfileName(RSEPreferencesManager.java:358)
-	at org.eclipse.rse.internal.core.model.SystemProfileManager.ensureDefaultPrivateProfile(SystemProfileManager.java:477)
-	at org.eclipse.rse.internal.core.model.SystemProfileManager.getDefaultPrivateSystemProfile(SystemProfileManager.java:416)
-	at org.eclipse.rse.internal.core.RSEInitJob.run(RSEInitJob.java:207)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
-Caused by: java.net.UnknownHostException: localhost.centos6.5: 未知的名称或服务
-	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
-	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
-	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
-	at java.net.InetAddress.getLocalHost(InetAddress.java:1500)
-	... 6 more
---------------------------------------------
-Sun Dec 25 12:46:38 CST 2016
-ERROR org.eclipse.rse.core  Unexpected Exception
-java.net.UnknownHostException: localhost.centos6.5: localhost.centos6.5: 未知的名称或服务
-	at java.net.InetAddress.getLocalHost(InetAddress.java:1505)
-	at org.eclipse.rse.core.RSECorePlugin.getLocalMachineName(RSECorePlugin.java:265)
-	at org.eclipse.rse.core.RSEPreferencesManager.getDefaultPrivateSystemProfileName(RSEPreferencesManager.java:358)
-	at org.eclipse.rse.internal.core.model.SystemProfileManager.createDefaultPrivateProfile(SystemProfileManager.java:450)
-	at org.eclipse.rse.internal.core.model.SystemProfileManager.ensureDefaultPrivateProfile(SystemProfileManager.java:501)
-	at org.eclipse.rse.internal.core.model.SystemProfileManager.getDefaultPrivateSystemProfile(SystemProfileManager.java:416)
-	at org.eclipse.rse.internal.core.RSEInitJob.run(RSEInitJob.java:207)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
-Caused by: java.net.UnknownHostException: localhost.centos6.5: 未知的名称或服务
-	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
-	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
-	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
-	at java.net.InetAddress.getLocalHost(InetAddress.java:1500)
-	... 7 more
 --------------------------------------------

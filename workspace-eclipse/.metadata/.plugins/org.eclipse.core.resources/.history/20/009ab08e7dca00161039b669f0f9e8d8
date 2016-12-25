@@ -1,0 +1,9 @@
+package getSingleHtml;
+
+public class test_getSingleHtml {
+
+	public static void main(String[] args) {
+
+	}
+
+}
