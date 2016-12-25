@@ -1,0 +1,11 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class tools {
+	public void run(String temp) throws Exception{
+		BufferedWriter bWriter = new BufferedWriter(new FileWriter("",true));
+		bWriter.write(temp);
+		bWriter.close();
+	}
+}

@@ -1,0 +1,6 @@
+package test;
+
+public class test_display {
+	public static void main(String[] args) throws Exception {
+		
+}

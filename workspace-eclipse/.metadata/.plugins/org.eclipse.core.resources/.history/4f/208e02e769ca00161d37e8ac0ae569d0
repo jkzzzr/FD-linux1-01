@@ -1,0 +1,20 @@
+package test;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+
+public class test_display {
+	public static void main(String[] args) throws Exception {
+		BufferedReader bReader = new BufferedReader(new InputStreamReader(
+				new FileInputStream("/home/Lee/data/test/bbb2"), "UTF-8"));
+		long index = 0L;
+		String temp = "";
+		while ((temp = bReader.readLine())!=null){
+			Long.parseLong(temp);
+		}
+		bWriter.flush();
+		bWriter.close();
+	}
+}

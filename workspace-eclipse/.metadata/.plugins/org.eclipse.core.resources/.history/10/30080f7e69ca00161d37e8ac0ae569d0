@@ -1,0 +1,19 @@
+package test;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class test_display {
+	public static void main(String[] args) throws Exception {
+		BufferedReader bReader = new BufferedReader(new InputStreamReader("", "UTF-8"));
+		long index = 0L;
+		while (true){	
+			String temp = bReader.readLine();
+			if (temp == null)break;
+			index +=temp.length()+1;
+			bWriter.write("["+index+"]\t"+temp+"\n");
+		}
+		bWriter.flush();
+		bWriter.close();
+	}
+}

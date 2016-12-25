@@ -1,0 +1,38 @@
+package record;
+
+import java.io.File;
+
+public class Entry_ReadFile {
+
+	public static void main(String[] args) {
+		
+	}
+	public void fun1(){
+		String inputPath = "/media/clueweb09_1of2/ClueWeb09_English_";
+		String outputPath = "";
+		for (int i = 1; i <=10; i++){
+			String tempInput = inputPath + i;
+			String tempoutput = outputPath + i;
+			String input= "";
+			File file = new File(tempInput);
+			File[] files = file.listFiles();
+			for (File tempf : files){
+				String en = tempf.getName();
+				input = inputPath+i+"/"+en;
+				new MyThread()
+			}
+		}
+	}
+}
+class MyThread extends Thread{
+	String intputPath = "";
+	String outputPath = "";
+	public MyThread(String i, String o) {
+		intputPath = i;
+	}
+	@Override
+	public void run() {
+		super.run();
+		
+	}
+}

@@ -1,0 +1,9 @@
+package record;
+
+public class Entry_ReadFile {
+
+	public static void main(String[] args) {
+
+	}
+
+}

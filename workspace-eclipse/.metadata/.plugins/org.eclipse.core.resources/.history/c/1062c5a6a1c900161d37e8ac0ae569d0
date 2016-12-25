@@ -1,0 +1,36 @@
+package record;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.TreeSet;
+
+public class ReadFile {
+
+	public static void main(String[] args) {
+		
+
+	}
+	public void run(){
+		String input_Prefix = "";
+		String outputPath_Prefix = "";
+HashMap<String, TreeSet<String>> hMap = new HashMap<>();
+		
+		BufferedReader bReader = new BufferedReader(new InputStreamReader(new FileInputStream(docidPath)));
+		String string = "";
+		while ((string = bReader.readLine())!=null){
+			String key1 = string.substring(17,19);
+			String key2 = string.substring(10,16);
+			TreeSet<String> tSet = new TreeSet<>();
+			if (hMap.containsKey(key2+"+"+key1)){
+				tSet = hMap.get(key2+"+"+key1);
+				tSet.add(string);
+			}
+			tSet.add(string);
+			hMap.put(key2+"+"+key1, tSet);
+		}
+		bReader.close();
+	}
+
+}

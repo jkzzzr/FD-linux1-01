@@ -1,0 +1,22 @@
+package test;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class skip {
+/**
+ * 测试skip能跳跃到哪里，是warc/018开头能，还是哪里
+ * @param args
+ * @throws Exception 
+ */
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new FileReader(""));
+		while (br.readLine()!="WARC-Identified-Payload-Type:"){
+			
+		}
+		String tempLine = br.readLine();
+		String temp = tempLine.replaceAll("", "");
+	}
+
+}

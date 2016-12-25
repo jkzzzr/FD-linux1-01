@@ -9,7 +9,9 @@ import javax.sound.midi.SysexMessage;
 public class Entry_ReadFile {
 
 	public static void main(String[] args) throws IOException {
+		long tt = System.currentTimeMillis();
 		new Entry_ReadFile().fun1();
+		System.err.println(System.currentTimeMillis() - tt);
 	}
 	public void fun1() throws IOException{
 		String inputPath = "/media/clueweb09_1of2/ClueWeb09_English_";
@@ -39,10 +41,25 @@ public class Entry_ReadFile {
 						System.err.println(output);
 					}
 				}
-	//			System.out.println(input+"=="+output);
-				new MyThread(input, output).start();;
+				run(input, output);
+		//		new MyThread(input, output).start();;
 			}
 		}
+	}
+	public void run(String intputPath, String outputPath){
+		File file = new File(intputPath);
+	File [] files = file.listFiles();
+	System.out.println(intputPath+"\t"+outputPath);
+	for (File tempf: files){
+		String filename = tempf.getName();
+		try {
+			ReadFile.filterAndWrite(intputPath+"/"+filename, outputPath+"/"+filename.replaceAll(".warc.gz", ""));
+		} catch (Exception e) {
+			System.err.println(intputPath+"\t"+outputPath+"\t"+filename.replaceAll(".warc.gz", ""));
+			e.printStackTrace();
+		}
+	}
+		
 	}
 }
 class MyThread extends Thread{

@@ -1,0 +1,12 @@
+package test;
+
+public class skip {
+/**
+ * 测试skip能跳跃到哪里，是warc/018开头能，还是哪里
+ * @param args
+ */
+	public static void main(String[] args) {
+		
+	}
+
+}

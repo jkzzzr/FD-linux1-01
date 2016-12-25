@@ -1,0 +1,12 @@
+package test;
+
+public class ReadFile {
+
+	public static void main(String[] args) throws Exception {
+		new ReadFile().filterAndWrite();
+	}
+	public void filterAndWrite() throws Exception{
+		record.ReadFile.filterAndWrite("", "");
+	}
+
+}

@@ -1,0 +1,23 @@
+package record;
+
+import java.io.File;
+
+public class Entry_ReadFile {
+
+	public static void main(String[] args) {
+		
+	}
+	public void fun1(){
+		String inputPath = "/media/clueweb09_1of2/ClueWeb09_English_";
+		for (int i = 1; i <=10; i++){
+			
+		}
+	}
+}
+class MyThread extends Thread{
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		super.run();
+	}
+}

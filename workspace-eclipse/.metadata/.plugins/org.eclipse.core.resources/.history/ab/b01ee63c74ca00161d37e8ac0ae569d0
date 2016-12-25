@@ -1,0 +1,31 @@
+package getSingleHtml;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.zip.GZIPInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class GetSingleHtml {
+	public void get(String inputPath, String outputPath, String docid, long index) throws Exception{
+		GZIPInputStream gzipInputStream = new GZIPInputStream(
+				new FileInputStream(inputPath));
+		BufferedReader bReader = new BufferedReader(
+				new InputStreamReader(gzipInputStream, "UTF-8"));
+		
+		String line = "";
+		bReader.skip(index);
+		while (true){
+			line = bReader.readLine();
+			if (line == null){
+				break;
+			}
+			if (line .startsWith("WARC/0.18")){WARC-Type:WARC-Target-URI
+				
+			}
+		}
+		
+	}
+}

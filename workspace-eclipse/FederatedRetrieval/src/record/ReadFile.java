@@ -19,7 +19,13 @@ import javax.security.auth.x500.X500Principal;
 import javax.sound.midi.SysexMessage;
 
 import tools.tools;
-
+/**
+ * 读取硬盘里面的数据，然后记录信息
+ * [docid URI point]
+ * point:(在原来的.warc.gz文件中的位置,long类型的值)	
+ * @author Lee
+ *
+ */
 public class ReadFile {
 
 	/**
@@ -108,6 +114,11 @@ public class ReadFile {
 		//去掉每个文件，最开头的一个说明小段落
 		Index index = new Index();
 		index.x = 0;
+		for (int tempx = 1;tempx <=12;tempx++){
+			templine = bReader.readLine();
+			index.incream(templine);
+		}
+		
 		while (true){
 			templine = bReader.readLine();
 			if (templine == null){
@@ -116,17 +127,22 @@ public class ReadFile {
 			index.incream(templine);
 			if (templine.startsWith("WARC/0.18")){
 				LINEInfo lineInfo = new LINEInfo();
-				lineInfo.skip = index.x - 1 - templine.length();
+				lineInfo.skip = index.x;
+				
 				//中间一行是WARC-Type: response，没什么用到
+				//WARC-Type: response
 				if ((templine = bReader.readLine()) ==null){
-					index.incream(templine);
 					break;
 				}
-				templine = bReader.readLine();
 				index.incream(templine);
+				
+				//WARC-Target-URI: http://00000-nrt-realestate.homepagest
+				templine = bReader.readLine();
 				if (templine == null){
 					break;
 				}
+				index.incream(templine);
+				
 				if (templine.contains("WARC-Target-URI:")){
 					String extractURI = "";
 					try{
@@ -136,7 +152,10 @@ public class ReadFile {
 					}
 					lineInfo.URI = extractURI;
 				}
-				//**************
+				//WARC-Warcinfo-ID: 993d3969-9643-4934-b1c6-68d4dbe55b83
+				//WARC-Date: 2009-03-65T08:43:19-0800
+				//WARC-Record-ID: <urn:uuid:67f7cabd-146c-41cf-bd01-04f5fa7d5229>
+				//WARC-TREC-ID: clueweb09-en0000-00-00000
 				for (int tempx = 1;tempx <=4;tempx++){
 					templine = bReader.readLine();
 					index.incream(templine);
@@ -150,10 +169,14 @@ public class ReadFile {
 					}
 					lineInfo.docid = extractDocid;
 				}
-				//**************
-				for (int tempx = 1;tempx <=3;tempx++){
+				//Content-Type: application/http;msgtype=response
+				//WARC-Identified-Payload-Type: 
+				//Content-Length: 16558
+				for (int tempx = 1;tempx <=2;tempx++){
 					index.incream(bReader.readLine());
 				}
+				templine = bReader.readLine();
+				index.incream(templine);
 				if (templine.contains("Content-Length:")){
 					String extractLength = "";
 					extractLength = templine.replaceAll("Content-Length: ", "");
@@ -172,9 +195,6 @@ public class ReadFile {
 	}
 		bWriter.flush();
 		bWriter.close();
-	}
-	public static long incream(long x,String line){
-		return x+line.length()+1;
 	}
 }
  class Index{
