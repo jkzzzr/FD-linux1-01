@@ -1,0 +1,56 @@
+package SplitCollection;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import javax.xml.crypto.Data;
+
+import splitCollection.SplitCollection;
+
+import java.util.StringTokenizer;
+
+public class splitCollection {
+	public static void main(String[]args) throws Exception{
+		String inputPath = "";
+		String outputPath = "";
+		HashMap<String, Data_doc_uri_index> hMap = new splitCollection().split(inputPath,outputPath);
+		for (Entry<String, Data_doc_uri_index> data:hMap.entrySet()){
+			System.out.println(data.getKey()+"\t"+);
+		}
+		
+	}
+	
+	public HashMap<String, Data_doc_uri_index> split(String input, String output) throws Exception{
+		HashMap<String, Data_doc_uri_index> result = new HashMap<>();
+		BufferedReader bReader = new BufferedReader(new FileReader(""));
+		String line = "";
+		while ((line = bReader.readLine())!=null){
+			Data_doc_uri_index data = splitWord(line);
+			result.put(data.getUri(), data);
+		}
+		return result;
+	}
+	public Data_doc_uri_index splitWord(String line) throws Exception{
+		StringTokenizer stringTokenizer = new StringTokenizer(line);
+		String[] strings = new String[stringTokenizer.countTokens()];
+		int index = 0;
+		while (stringTokenizer.hasMoreTokens()){
+			strings[index] = stringTokenizer.nextToken();
+		}
+		Data_doc_uri_index data = new Data_doc_uri_index();
+		data.setDocid(strings[0]);
+		data.setUri(extract(strings[1]));
+		data.setIndex(Long.parseLong(strings[strings.length-1]));
+		return data;
+	}
+	public String extract(String uri) throws URISyntaxException{
+		URI uri2 = new URI(uri);
+		String hostname = uri2.getHost();
+		return hostname;
+	}
+}
+

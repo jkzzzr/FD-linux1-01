@@ -1,0 +1,12 @@
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class ttttrt {
+//http://jumeteor.tripod.com/concerts_Queen/1979/260179.html
+	public static void main(String[] args) throws URISyntaxException {
+		URI uri = new URI("http://jun_miyake.mondomix.com/en/artiste.html");
+		System.out.println(uri.getHost());
+
+	}
+
+}

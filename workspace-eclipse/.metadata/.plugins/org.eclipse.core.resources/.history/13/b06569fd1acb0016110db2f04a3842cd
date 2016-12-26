@@ -1,0 +1,8 @@
+package SplitCollection;
+
+public class splitCollection {
+	public void split(String input, String output){
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package splitCollection;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class SplitCollection {
+	public void split(String input, String output){
+		BufferedReader bReader = new BufferedReader(new FileReader(input,"UTF-8"))
+	}
+
+}
