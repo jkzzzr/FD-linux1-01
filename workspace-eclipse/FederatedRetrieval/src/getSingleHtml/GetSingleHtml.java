@@ -12,6 +12,7 @@ import java.io.FileInputStream;
  * @author Lee
  */
 public class GetSingleHtml {
+	public static long allskiplength = 0;
 	public GetSingleHtml(){
 		
 	}
@@ -26,11 +27,17 @@ public class GetSingleHtml {
 	String output = "";
 	String docid = "";
 	long index = 0;
-	public void run(){
+	public void run(int x){
 		String html;
 		try {
-			html = getHtml(input, docid, index);
+			if (x == 1){
+				html = getHtml1(input, docid, index);
+			}else {
+				html = getHtml2(input, docid, index, 0.995);
+			}
+			System.out.println("html.length:"+html.length());
 			write(output+"/"+docid, html);
+			System.out.println(allskiplength);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -43,7 +50,7 @@ public class GetSingleHtml {
 	 * @return	返回文档的html源文件
 	 * @throws Exception
 	 */
-	public String getHtml(String inputPath,  String docid, long index) throws Exception{
+	public String getHtml1(String inputPath,  String docid, long index) throws Exception{
 		GZIPInputStream gzipInputStream = new GZIPInputStream(
 				new FileInputStream(inputPath));
 		BufferedReader bReader = new BufferedReader(
@@ -57,7 +64,7 @@ public class GetSingleHtml {
 			if (line == null){
 				break;
 			}
-			if (line .startsWith("WARC/0.18")){
+			if (line .startsWith("WARC/018")){
 				bReader.readLine();
 				bReader.readLine();
 				bReader.readLine();
@@ -96,6 +103,7 @@ public class GetSingleHtml {
 		}
 		//就是没找到想要的文本喽
 		if (line==null){
+			bReader.close();
 			return null;
 		}
 		//不为空则找到了对应文档编号的文档
@@ -140,6 +148,89 @@ public class GetSingleHtml {
 		return HtmlBuffer.toString();
 	}
 	/**
+	 * ClueWeb12年的数据，是WARC10Collection格式的，在提取单个文本的时候，有个问题，
+	 * index 不准，有点大了，我也不知掉为什么
+	 * 可能是字节和字符的原因把
+	 * @param inputPath
+	 * @param docid
+	 * @param index
+	 * @return
+	 * @throws Exception
+	 */
+	public String getHtml2(String inputPath,  String docid, long index, double percent) throws Exception{
+		GZIPInputStream gzipInputStream = new GZIPInputStream(
+				new FileInputStream(inputPath));
+		BufferedReader bReader = new BufferedReader(
+				new InputStreamReader(gzipInputStream, "UTF-8"));
+		
+		String line = "";
+		//？？？？？？？？？？？？？？？？？？？？？
+		bReader.skip((long) (index * percent));
+	//	System.out.println(index);
+		
+		while (true){
+			line = bReader.readLine();
+			if (line == null){
+				break;
+			}
+			allskiplength +=line.length();
+		//	System.out.println(line);
+			
+			if (line.startsWith("WARC-TREC-ID:")){
+				String tempdoc = line.substring(line.indexOf("clueweb"));
+	//			System.out.println(tempdoc);
+				if (tempdoc.equals(docid)){
+					break;
+				}else if (tempdoc.compareTo(docid)<0){
+					continue;
+				}else {
+					bReader.close();
+					System.out.println("输入的docid为："+docid+",但是目前读到了："+tempdoc);
+					return null;
+				}
+			}
+		}
+		//就是没找到想要的文本喽
+		if (line==null){
+			bReader.close();
+			System.out.println("文本读光了，也没找到");
+			return null;
+		}
+		//不为空则找到了对应文档编号的文档
+		//且line停留在WARC-TREC-ID: clueweb09-en0000-00-00000这一行
+		String tt = "";
+		while (true){
+			if ((tt = bReader.readLine()).contains("Content-Length:")){
+				break;
+			}
+		}
+		StringBuffer HtmlBuffer = new StringBuffer();
+	
+		//真正的文本都是存放在conteng-length之后的，但是有的文本的content-length有两个，有的没有两个
+		//所以，往下找20行，如果遇到了第二个content-length，则现在作为起点。
+		//如果没有遇到，说明，刚刚的conteng-length，就是正式文本开始的起点。那就，把他再加回来
+		for (int i = 0; i < 20; i++){
+			String temp = bReader.readLine();
+			if (temp.contains("Content-Type:")||temp.contains("<!")){
+				break;
+			}
+		}
+		while (true){
+			String realline = bReader.readLine();
+			if (realline == null){
+				break;
+			}
+			else if (realline.equals("WARC/1.0")){
+				break;
+			}
+			//下面就是正式文本了
+			HtmlBuffer.append(realline+"\n");
+		}
+		bReader.close();
+		
+		return HtmlBuffer.toString();
+	}
+	/**
 	 * 将html源文件写入输出文件中
 	 * @param outputPath
 	 * @param html
@@ -150,9 +241,11 @@ public class GetSingleHtml {
 		if (!file.exists()){
 			file .createNewFile();
 		}
+		System.out.println(html.length());
 		BufferedWriter bWriter = new BufferedWriter(new FileWriter(outputPath));
 		if (html !=null){
 			bWriter.write(html);
+			bWriter.flush();
 		}
 		bWriter.close();
 	}

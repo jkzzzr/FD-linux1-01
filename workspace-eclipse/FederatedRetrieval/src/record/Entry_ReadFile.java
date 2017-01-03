@@ -53,7 +53,7 @@ public class Entry_ReadFile {
 	for (File tempf: files){
 		String filename = tempf.getName();
 		try {
-			ReadFile.filterAndWrite(intputPath+"/"+filename, outputPath+"/"+filename.replaceAll(".warc.gz", ""));
+			new ReadFile_018().filterAndWrite(intputPath+"/"+filename, outputPath+"/"+filename.replaceAll(".warc.gz", ""));
 		} catch (Exception e) {
 			System.err.println(intputPath+"\t"+outputPath+"\t"+filename.replaceAll(".warc.gz", ""));
 			e.printStackTrace();
@@ -77,7 +77,7 @@ class MyThread extends Thread{
 		for (File tempf: files){
 			String filename = tempf.getName();
 			try {
-				ReadFile.filterAndWrite(intputPath+"/"+filename, outputPath+"/"+filename.replaceAll(".warc.gz", ""));
+				new ReadFile_018().filterAndWrite(intputPath+"/"+filename, outputPath+"/"+filename.replaceAll(".warc.gz", ""));
 			} catch (Exception e) {
 				System.out.println(intputPath+"\t"+outputPath+"\t"+filename.replaceAll(".warc.gz", ""));
 				e.printStackTrace();

@@ -14,7 +14,19 @@ import java.io.FileReader;
 public class ttt {
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
+		
+		String aa="";
+		System.out.println(aa.isEmpty());
+		BufferedReader br22 = new BufferedReader(new FileReader("/home/Lee/data/test/aaa"));
+		int length = 0;
+		while ((aa =br22.readLine())!=null){
+			length+=aa.length()+1;
+			System.out.println(aa.length());
+		}
+
+		System.out.println("++++++++++++++"+length);
+		
+		
 		BufferedReader br = new BufferedReader(new FileReader("/media/clueweb09_1of2/ClueWeb09_English_1/en0000/00.warc"));
 		String temp = br.readLine();
 		int x = temp.length();

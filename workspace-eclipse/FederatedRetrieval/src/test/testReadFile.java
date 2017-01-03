@@ -44,10 +44,11 @@ public class testReadFile {
 			BufferedReader br = new BufferedReader(
 					new InputStreamReader(
 							new GZIPInputStream(
-									new FileInputStream("/media/clueweb09_1of2/ClueWeb09_English_1/en0002/08.warc.gz"))
-							,"UTF-8"));
+								//	new FileInputStream("/media/clueweb09_1of2/ClueWeb09_English_1/en0002/08.warc.gz"))
+									new FileInputStream("/home/Lee/data/test/0000tw-00.warc.gz"))
+									,"UTF-8"));
 			br.skip(AL.get(i).len);
-			System.out.println(AL.get(i).docid+"**\t"+br.readLine());
+			System.out.println(AL.get(i).docid+"\t"+ AL.get(i).len+"**\t"+br.readLine());
 			br.close();
 			Thread.sleep(1000L);
 		}
