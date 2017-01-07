@@ -72,7 +72,7 @@ public class Entry_ReadFile {
 	
 		String inputPath = "/media/ClueWeb12_CatB/ClueWeb12_";
 	String outputPath = "/home/Lee/data/D1/ClueWeb12_";
-	for (int i = 0; i <=19; i++){
+	for (int i = 0; i <=0; i++){
 		String istr = String.format("%02d", i);
 		String tempInput = inputPath + istr;
 		String tempoutput = outputPath + istr;
