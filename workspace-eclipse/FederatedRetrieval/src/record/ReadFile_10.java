@@ -21,7 +21,6 @@ public class ReadFile_10 implements Ireadfile{
 	/**
 	 * 记录硬盘中的ClueWeb09_English_2文件夹下面包含哪些en0000的文件夹
 	 */
-	public static int count = 0;
 	private HashMap<String,String> HMap_floder_en = new HashMap<String,String>();
 	public static void main(String[] args) {
 		
@@ -76,14 +75,14 @@ public class ReadFile_10 implements Ireadfile{
 		return sub_filename;
 		
 	}
-	/**
+/*	*//**
 	 * 
 	 * @param flodername	示例：en0000
 	 * @param inputPath_prefix	示例：media/clueweb09_1of2/ClueWeb09_English_1/en0000
 	 * runn("/media/clueweb09_1of2/ClueWeb09_English_1/en0000/00.warc.gz", "/home/Lee/音乐/result/en0000/00.warc", treeSet.get("00"));
 			
 	 * @throws Exception 
-	 */
+	 *//*
 	public void filterAndWrite(String inputPath, String outputPath) throws Exception{
 		File file2 = new File(outputPath);
 		if (!file2.exists()){
@@ -176,7 +175,6 @@ public class ReadFile_10 implements Ireadfile{
 					String extractLength = "";
 					extractLength = templine.replaceAll("Content-Length: ", "");
 					needskip = Long.parseLong(extractLength);
-					System.out.println("skip:"+needskip);
 				}
 				//HTTP/1.1 200 OK
 				//Date: Fri, 10 Feb 2012 21:51:22 GMT
@@ -206,7 +204,6 @@ public class ReadFile_10 implements Ireadfile{
 					}
 					bReader.skip(needskip);
 					index.x += needskip;
-					System.out.println("out\t");
 					flag_skip = false;
 				}
 				
@@ -221,11 +218,11 @@ public class ReadFile_10 implements Ireadfile{
 				}
 			}
 			
-	}System.out.println("count:"+count);
+	}
 		bReader.close();
 		bWriter.flush();
 		bWriter.close();
-	}
+	}*/
 	/**
 	 * 
 	 * @param flodername	示例：en0000
@@ -234,7 +231,7 @@ public class ReadFile_10 implements Ireadfile{
 			
 	 * @throws Exception 
 	 */
-	public void filterAndWrite2(String inputPath, String outputPath) throws Exception{
+	public void filterAndWrite(String inputPath, String outputPath) throws Exception{
 		File file2 = new File(outputPath);
 		if (!file2.exists()){
 			file2.createNewFile();
@@ -331,7 +328,7 @@ public class ReadFile_10 implements Ireadfile{
 				bWriter.flush();
 			}
 			
-	}System.out.println("count:"+count);
+	}
 //		bReader.close();
 		bWriter.flush();
 		bWriter.close();
@@ -351,12 +348,10 @@ public class ReadFile_10 implements Ireadfile{
 					System.out.println("\t:"+skipString);
 					Thread.sleep(500);
 				}else {
-					System.out.println();
 				}
 				x+=skipString.length()+1;
 				bReader.close();
 				gzipInputStream.close();
-				System.out.println(x);
 			}catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -141,7 +141,6 @@ public class ReadFile_018 implements Ireadfile{
 					break;
 				}
 				index.incream(templine);
-				System.out.println("*********"+templine);
 				
 				if (templine.contains("WARC-Target-URI:")){
 					String extractURI = "";

@@ -27,7 +27,7 @@ public class ReadFile {
 		ireadfile.filterAndWrite("/media/clueweb09_1of2/ClueWeb09_English_1/en0002/08.warc.gz"
 				, "/home/Lee/data/test/aaa");*/
 		ReadFile_10 ireadfile = new record.ReadFile_10();
-		ireadfile.filterAndWrite2("/home/Lee/data/test/0000tw-00.warc.gz"
+		ireadfile.filterAndWrite("/home/Lee/data/test/0000tw-00.warc.gz"
 				, "/home/Lee/data/test/aaa");
 		System.out.println(System.currentTimeMillis() - tt);
 	}
