@@ -2,18 +2,16 @@ package record;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.naming.InitialContext;
 
 public class Entry_ReadFile {
 
-	/**
-	 * 作用就是，用多线程方法执行的时候，有时候执行完了程序，但是它就是不停下来，所以用这个简单的栈来记录
-	 * 程序的执行状况，每个线程执行的时候就在站立面加入一个元素，相当与注册一下，然后执行完了就弹出一个，
-	 * 相当与注销，然后主线程中有一个时间任务类，不断的扫描这个栈，如果栈为空，那么就结束整个程序。
-	 */
 	public static Stack<Boolean>  STACK= new Stack<>();
 	public static void main(String[] args) throws IOException {
 		long tt = System.currentTimeMillis();
@@ -31,12 +29,8 @@ public class Entry_ReadFile {
 			}
 		};
 		Timer timer = new Timer(true);
-		//10分钟检查一次
-		timer.schedule(timerTask, 0, 600000);
+		timer.schedule(timerTask, 0, 10000);
 	}
-	/**
-	 * 针对12年b集数据
-	 */
 	public void fun2(){
 			String inputPath = "/media/ClueWeb12_CatB/ClueWeb12_";
 		String outputPath = "/home/Lee/data/D1/ClueWeb12_";

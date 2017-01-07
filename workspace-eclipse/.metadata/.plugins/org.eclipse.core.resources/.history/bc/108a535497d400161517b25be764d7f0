@@ -2,10 +2,13 @@ package record;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.naming.InitialContext;
 
 public class Entry_ReadFile {
 
@@ -31,7 +34,6 @@ public class Entry_ReadFile {
 			}
 		};
 		Timer timer = new Timer(true);
-		//10分钟检查一次
 		timer.schedule(timerTask, 0, 600000);
 	}
 	/**
