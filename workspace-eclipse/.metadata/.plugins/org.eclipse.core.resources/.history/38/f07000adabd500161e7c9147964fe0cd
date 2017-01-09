@@ -1,0 +1,71 @@
+package combinAllCollection;
+
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Vector;
+
+import tools.tools;
+
+public class test {
+
+	public static int x = 2;
+	public static void main(String[] args) {
+		TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				x= -4;
+				
+			}
+		};
+		Timer timer = new Timer();
+		timer.schedule(timerTask, 0);
+	}
+
+
+	/**
+	 * String abc = new test().extract("networkedblogs.com");
+		System.out.println(abc);
+	 * @param uri
+	 * @return
+	 */
+	public String extract(String uri){
+		String subURI = uri.substring(0, uri.lastIndexOf("."));
+		int index = subURI.lastIndexOf(".");
+		index ++;
+		String returnString = uri.substring(index);
+		return returnString;
+	}
+	public void testHashTable(){
+		Hashtable<String, Vector<String>> hashtable = new Hashtable<>();
+		hashtable.put("aaa", new Vector<String>(){{add("a11");add("a22");}});
+		hashtable.get("aaa").add("bbb");
+		Iterator<String> iterator = hashtable.get("aaa").iterator();
+		while (iterator.hasNext()){
+			System.out.println(iterator.next());
+		}
+	}
+	public void notifytest(){
+		tools TTT = new tools();
+		TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				
+				if (x<0){
+					TTT.notify();
+				}
+				
+			}
+		};
+		Timer timer = new Timer();
+		timer.schedule(timerTask, 0,1000);
+		try {
+			TTT.wait();
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+	}
+}

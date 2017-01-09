@@ -1,0 +1,17 @@
+package combinAllCollection;
+
+public class test {
+
+	public static void main(String[] args) {
+		String abc = new test().extract("news.yahoo.com");
+		System.out.println(abc);
+	}
+
+	public String extract(String uri){
+		String subURI = uri.substring(0, uri.lastIndexOf("."));
+		int index = subURI.lastIndexOf(".");
+		index = index == -1 ? 0:index + 1;
+		String returnString = uri.substring(index);
+		return returnString;
+	}
+}

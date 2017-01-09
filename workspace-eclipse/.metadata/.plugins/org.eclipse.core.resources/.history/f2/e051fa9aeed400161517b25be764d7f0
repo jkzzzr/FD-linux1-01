@@ -1,0 +1,46 @@
+package SplitCollection;
+
+import java.io.File;
+
+public class Entry_Split {
+
+	public static void main(String[] args) {
+
+		String inputPath = "/home/Lee/data/D1/ClueWeb12_";
+		String outputPath = "/home/Lee/data/D2/ClueWeb12_";
+		for (int i = 0; i <=19; i++){
+			String istr = String.format("%02d", i);
+			String tempInput = inputPath + istr;
+			String tempoutput = outputPath + istr;
+			File outputFile = new File(tempoutput);
+			if (!outputFile.exists()){
+				outputFile.mkdirs();
+			}
+			File file = new File(tempInput);
+			File[] files = file.listFiles();
+			for (File tempf : files){
+				
+				String en = tempf.getName();
+	
+				String input= "";
+				input = inputPath+istr+"/"+en;
+				
+				String output = "";
+				output = outputPath+istr+"/"+en;
+				File outputFile2 = new File(output);
+				if (!outputFile2.exists()){
+					try{
+					outputFile2.mkdir();
+					}catch (Exception e) {
+						System.err.println(output);
+					}
+				}
+			
+			new MyThread(input, output,new ReadFile_10()).start();
+	//		new MyThread(input, output).start();;
+		}
+	}
+
+	}
+
+}

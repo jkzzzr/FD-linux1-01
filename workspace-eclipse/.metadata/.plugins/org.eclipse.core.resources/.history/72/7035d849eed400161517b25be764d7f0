@@ -1,0 +1,9 @@
+package SplitCollection;
+
+public class Entry_Split {
+
+	public static void main(String[] args) {
+
+	}
+
+}

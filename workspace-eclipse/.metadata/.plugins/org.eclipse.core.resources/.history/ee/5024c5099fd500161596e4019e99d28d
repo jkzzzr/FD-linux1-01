@@ -1,0 +1,17 @@
+package combinAllCollection;
+
+public class test {
+
+	public static void main(String[] args) {
+		String abc = new test().extract("foursquare.com");
+		System.out.println(abc);
+	}
+
+	public String extract(String uri){
+		String subURI = uri.substring(0, uri.indexOf("."));
+		int index = subURI.indexOf(".");
+		index = index == -1 ? 0:index;
+		String returnString = uri.substring(index);
+		return returnString;
+	}
+}

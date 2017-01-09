@@ -32,7 +32,8 @@ public class Entry_ReadFile {
 		};
 		Timer timer = new Timer(true);
 		//10分钟检查一次
-		timer.schedule(timerTask, 0, 600000);
+		timer.schedule(timerTask, 0, 300000);
+		
 	}
 	/**
 	 * 针对12年b集数据

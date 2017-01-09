@@ -1,0 +1,12 @@
+package combinAllCollection;
+
+public class CombineAllCollection {
+
+	public static void main(String[] args) {
+
+	}
+	public void combine(){
+		
+	}
+
+}

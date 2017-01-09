@@ -2,7 +2,7 @@ package SplitCollection;
 
 public class Data_doc_uri_index implements Comparable{
 	private String docid;
-	private String uri;
+	private String uri = "ERRR";
 	private long index;
 	public String getDocid() {
 		return docid;

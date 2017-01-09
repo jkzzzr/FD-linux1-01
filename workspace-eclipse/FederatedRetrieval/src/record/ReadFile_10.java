@@ -15,6 +15,7 @@ import java.util.zip.GZIPInputStream;
 import org.w3c.dom.css.ElementCSSInlineStyle;
 
 import test.Readline;
+import tools.tools;
 
 public class ReadFile_10 implements Ireadfile{
 
@@ -34,7 +35,6 @@ public class ReadFile_10 implements Ireadfile{
 	 */
 	public void init_floder_en(){
 		String input_Prefix = "/media/clueweb09_1of2/ClueWeb09_English_";
-		String outputPath_Prefix = "";
 		
 		//将en0000与外层的文件夹对应起来ClueWeb09_English_1
 		//记录每个ClueWeb09_English_1下面存储的en0000文件夹有哪些
@@ -297,25 +297,23 @@ public class ReadFile_10 implements Ireadfile{
 					}
 				
 					if (templine.contains("Content-Length:")){
+						try{
 						String extractLength = "";
 						extractLength = templine.replaceAll("Content-Length: ", "");
 						needskip = Long.parseLong(extractLength);
 						needskip=(Long)Math.round(needskip*1.0);
+						}catch (Exception e) {
+							//就是没有找到Content-Length嘛，也没什么大不了的，就是继续一句一句的循环呗，就不跳了
+							tools.run("@ReadFile_10\n\tContent-Length err\n\tID是：" + lineInfo.docid+
+									"\n\t出错的语句是：" + templine);
+						}
 						if (hasID&&hasURI){
 							readline.skip(needskip);
 							index.x += needskip;
 						}else {
-							System.out.println("err!!!!!!!!!!!!!!!!!!!!");
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							System.out.println(readline.readLine());
-							Thread.sleep(10000);
+							tools.run("@ReadFile_10\n\tContent-Length err没有ID和URI就找到了Content-Length\n\t"
+									+ "\n\t文档ID为：" + lineInfo.docid 
+									+ "\n\t文档URI为：" + lineInfo.URI);
 						}
 						break;
 					}
@@ -332,6 +330,7 @@ public class ReadFile_10 implements Ireadfile{
 //		bReader.close();
 		bWriter.flush();
 		bWriter.close();
+		gzipInputStream.close();
 	}
 	class Index2{
 		long x = 0;

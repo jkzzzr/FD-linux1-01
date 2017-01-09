@@ -1,0 +1,24 @@
+package combinAllCollection;
+
+import java.util.Hashtable;
+import java.util.Vector;
+
+public class test {
+
+	public static void main(String[] args) {
+		String abc = new test().extract("networkedblogs.com");
+		System.out.println(abc);
+	}
+
+	public String extract(String uri){
+		String subURI = uri.substring(0, uri.lastIndexOf("."));
+		int index = subURI.lastIndexOf(".");
+		index ++;
+		String returnString = uri.substring(index);
+		return returnString;
+	}
+	public void testHashTable(){
+		Hashtable<String, Vector<String>> hashtable = new Hashtable<>();
+		hashtable.put("aaa", new Vector<>{add("a11");})
+	}
+}
