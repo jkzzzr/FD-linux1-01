@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;ChooseDocList&apos; to &apos;choose_doc_list&apos;&#x0A;- Original project: &apos;FIR_2&apos;&#x0A;- Original element: &apos;FIR_2/src/ChooseDocList&apos;&#x0A;- Renamed element: &apos;FIR_2/src/choose_doc_list&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;ChooseDocList&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;ChooseDocList" name="choose_doc_list" qualified="false" references="true" stamp="1484308452437" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,39 @@
+package choose_doc_list;
+
+import java.io.File;
+
+import record.ReadFile_018;
+
+public class ChooseDocList {
+
+	public static void main(String[] args) {
+		String inputPath = "";
+		for (int i = 1; i <=10; i++){
+			String tempInput = inputPath + i;
+			File outputFile = new File(tempoutput);
+			if (!outputFile.exists()){
+				outputFile.mkdirs();
+			}
+			File file = new File(tempInput);
+			File[] files = file.listFiles();
+			for (File tempf : files){
+				String en = tempf.getName();
+
+				String input= "";
+				input = inputPath+i+"/"+en;
+				
+				String output = "";
+				File outputFile2 = new File(output);
+				if (!outputFile2.exists()){
+					try{
+					outputFile2.mkdir();
+					}catch (Exception e) {
+						System.err.println(output);
+					}
+				}
+				..........
+			}
+		}
+	}
+
+}

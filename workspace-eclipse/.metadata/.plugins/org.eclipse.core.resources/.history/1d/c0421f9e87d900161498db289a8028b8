@@ -1,0 +1,36 @@
+package choose_doc_list;
+
+import java.io.File;
+
+
+public class ChooseDocList {
+
+	public static void main(String[] args) {
+		String inputPath = "/home/Lee/data/D1/ClueWeb12_";
+		for (int i = 1; i <=10; i++){
+			String tempInput = inputPath + i;
+			File file = new File(tempInput);
+			File[] files = file.listFiles();
+			for (File tempf : files){
+				String en = tempf.getName();
+
+				String input= "";
+				input = inputPath+i+"/"+en;
+				File file2 = new File(intputPath);
+				File [] files = file.listFiles();
+				for (File tempf: files){
+					String filename = tempf.getName();
+					try {
+						ireadfile.filterAndWrite(intputPath+"/"+filename, outputPath+"/"+filename.replaceAll(".warc.gz", ""));
+						
+					} catch (Exception e) {
+						System.err.println(intputPath+"\t"+outputPath+"\t"+filename.replaceAll(".warc.gz", ""));
+						e.printStackTrace();
+					}
+				}
+				..
+			}
+		}
+	}
+
+}
