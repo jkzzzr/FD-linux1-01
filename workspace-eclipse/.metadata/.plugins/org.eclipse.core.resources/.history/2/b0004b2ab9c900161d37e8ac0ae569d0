@@ -1,8 +1,0 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-
-public class tools {
-	public void run(){
-		BufferedWriter bWriter = new BufferedWriter(new FileWriter(""));
-	}
-}

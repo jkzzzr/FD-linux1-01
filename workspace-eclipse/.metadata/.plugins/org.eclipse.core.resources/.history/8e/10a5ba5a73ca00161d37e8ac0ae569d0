@@ -1,7 +1,0 @@
-package getSingleHtml;
-
-public class GetSingleHtml {
-	public void get(){
-		
-	}
-}

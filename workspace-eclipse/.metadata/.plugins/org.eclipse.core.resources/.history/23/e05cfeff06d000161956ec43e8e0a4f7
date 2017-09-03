@@ -1,8 +1,0 @@
-package record;
-
-public interface Ireadfile {
-
-	public static void filterAndWrite(String inputPath, String outputPath) throws Exception{
-		
-	}
-}
